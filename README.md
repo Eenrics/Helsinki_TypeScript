@@ -17,3 +17,7 @@ This is Helsinki typescript project
 - The language
 - The compiler
 - The language service
+
+######
+
+> write the simple arrays with the [] syntax and use the the <> syntax for the more complex ones

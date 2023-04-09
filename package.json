@@ -1,0 +1,15 @@
+{
+  "name": "helsinki_typescript",
+  "version": "1.0.0",
+  "description": "helsinki university typescript project",
+  "main": "index.js",
+  "scripts": {
+    "ts-node": "ts-node"
+  },
+  "author": "Ebenezer Exetie",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescipt": "^1.0.0"
+  }
+}

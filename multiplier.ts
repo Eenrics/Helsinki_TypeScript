@@ -1,7 +1,5 @@
 type Operation = 'multiply' | 'add' | 'divide';
 
-type Result = number | string;
-
 type Item = number | string
 
 const multiplicator = (a: number, b:number, printText: Operation): void => {

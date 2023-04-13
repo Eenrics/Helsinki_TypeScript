@@ -9,12 +9,12 @@ const argumentParse = (args: string[]): ExercisesValues => {
         if (isNaN(Number(args[i]))) throw new Error('Provided values were not numbers!');
     }
 
-    const target = Number(args[2])
-    const dailyExercise = args.slice(3).map(exe => Number(exe))
+    const target = Number(args[2]);
+    const dailyExercise = args.slice(3).map(exe => Number(exe));
 
-    return { target, dailyExercise }
+    return { target, dailyExercise };
     
-    }
+    };
 
 interface Result {
     periodLength: number,
@@ -26,9 +26,9 @@ interface Result {
     average: number
 }
 
-const calculateExercises = (): Result => {
+const calculateExercises = (exeInput?: ExercisesValues): Result => {
 
-    const {target, dailyExercise} = argumentParse(process.argv)
+    const { target, dailyExercise } = !exeInput ? argumentParse(process.argv) : exeInput;
 
     interface Rating {
         rating: number,
@@ -37,29 +37,29 @@ const calculateExercises = (): Result => {
     }
 
     const rateExercies = (avr: number, trg: number): Rating => {
-        let rating, ratingDescription, success
+        let rating, ratingDescription, success;
 
         if (avr < trg) {
-            ratingDescription = "not too bad but could be better"
-            rating = 1
-            success = false
+            ratingDescription = "not too bad but could be better";
+            rating = 1;
+            success = false;
         } else if (avr === trg) {
-            ratingDescription = "you rocked it and keep it up"
-            rating = 2
-            success = true
+            ratingDescription = "you rocked it and keep it up";
+            rating = 2;
+            success = true;
         } else {
-            ratingDescription = "you are a star"
-            rating = 3
-            success = true
+            ratingDescription = "you are a star";
+            rating = 3;
+            success = true;
         }
 
-        return {rating, ratingDescription, success}
-    }
+        return {rating, ratingDescription, success};
+    };
 
-    const periodLength = dailyExercise.length
-    const trainingDays = dailyExercise.filter(ex => ex > 0).length
-    const average = dailyExercise.reduce((ac, ex) => (ac + ex)) / 7
-    const {rating, ratingDescription, success} = rateExercies(average, target)
+    const periodLength = dailyExercise.length;
+    const trainingDays = dailyExercise.filter(ex => ex > 0).length;
+    const average = dailyExercise.reduce((ac, ex) => (ac + ex)) / 7;
+    const {rating, ratingDescription, success} = rateExercies(average, target);
 
     return {
         periodLength,
@@ -69,16 +69,18 @@ const calculateExercises = (): Result => {
         rating,
         ratingDescription,
         target,
-    }
+    };
 
-}
+};
 
 try {
-    console.log(calculateExercises())
+    console.log(calculateExercises());
 } catch (error: unknown) {
-    let errorMessage = 'Something went wrong: '
+    let errorMessage = 'Something went wrong: ';
     if (error instanceof Error) {
       errorMessage += error.message;
     }
     console.log(errorMessage);
   }
+
+export default calculateExercises;

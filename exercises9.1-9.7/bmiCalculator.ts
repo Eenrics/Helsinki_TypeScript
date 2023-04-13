@@ -11,15 +11,15 @@ const argumentParser = (args: string[]): BMIValues => {
       return {
         height: Number(args[2]),
         weight: Number(args[3])
-      }
+      };
     } else {
       throw new Error('Provided values were not numbers!');
     }
-  }
+  };
 
 const calculateBmi = (params?: BMIValues): string => {
 
-    const { height, weight } = !params ? argumentParser(process.argv) : params
+    const { height, weight } = !params ? argumentParser(process.argv) : params;
 
     const bmi = weight / (height / 100) ** 2;
     if (bmi < 18.5) {
@@ -34,13 +34,13 @@ const calculateBmi = (params?: BMIValues): string => {
 };
 
 try {
-    console.log(calculateBmi())
+    console.log(calculateBmi());
 } catch (error: unknown) {
-    let errorMessage = 'Something went wrong: '
+    let errorMessage = 'Something went wrong: ';
     if (error instanceof Error) {
       errorMessage += error.message;
     }
     console.log(errorMessage);
   }
 
-export default calculateBmi
+export default calculateBmi;

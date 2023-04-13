@@ -1,10 +1,10 @@
 type Operation = 'multiply' | 'add' | 'divide';
 
-type Item = number | string
+type Item = number | string;
 
-const multiplicator = (a: number, b:number, printText: Operation): void => {
+const multiplicator = (a: number, b: number, printText: Operation): void => {
     console.log(printText,  a * b);
-}
+};
 
 
 interface MultiplyValues {
@@ -20,26 +20,26 @@ interface MultiplyValues {
       return {
         value1: Number(args[2]),
         value2: Number(args[3])
-      }
+      };
     } else {
       throw new Error('Provided values were not numbers!');
     }
-  }
+  };
   
   try {
     const { value1, value2 } = parseArguments(process.argv);
     multiplicator(value1, value2, `multiply`);
 } catch (error: unknown) {
-    let errorMessage = 'Something bad happened.'
+    let errorMessage = 'Something bad happened.';
     if (error instanceof Error) {
       errorMessage += ' Error: ' + error.message;
     }
     console.log(errorMessage);
   }
 
-let arr: Item[] = [1, 's', 'test', 6]
+const arr: Item[] = [1, 's', 'test', 6];
 
-console.log(arr)
+console.log(arr);
 
 const calculator = (a: number, b: number, op: Operation) : number => {
     switch(op) {
@@ -53,15 +53,15 @@ const calculator = (a: number, b: number, op: Operation) : number => {
       default:
         throw new Error('Operation is not multiply, add or divide!');
     }
-  }
+  };
   
   try {
-    let a = parseInt(process.argv[2])
-    let b = parseInt(process.argv[3])
+    const a = parseInt(process.argv[2]);
+    const b = parseInt(process.argv[3]);
 
     console.log(calculator(a, b, 'divide'));
   } catch (error: unknown) {
-    let errorMessage = 'Something went wrong: '
+    let errorMessage = 'Something went wrong: ';
     if (error instanceof Error) {
       errorMessage += error.message;
     }

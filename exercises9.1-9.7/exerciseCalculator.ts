@@ -1,3 +1,21 @@
+interface ExercisesValues {
+    dailyExercise: number[],
+    target: number
+}
+
+const argumentParse = (args: string[]): ExercisesValues => {
+
+    for (let i = 2; i < args.length; i++) {
+        if (isNaN(Number(args[i]))) throw new Error('Provided values were not numbers!');
+    }
+
+    const target = Number(args[2])
+    const dailyExercise = args.slice(3).map(exe => Number(exe))
+
+    return { target, dailyExercise }
+    
+    }
+
 interface Result {
     periodLength: number,
     trainingDays: number,
@@ -8,7 +26,9 @@ interface Result {
     average: number
 }
 
-const calculateExercises = (dailyExercise: number[], target: number): Result => {
+const calculateExercises = (): Result => {
+
+    const {target, dailyExercise} = argumentParse(process.argv)
 
     interface Rating {
         rating: number,
@@ -53,4 +73,4 @@ const calculateExercises = (dailyExercise: number[], target: number): Result => 
 
 }
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2))
+console.log(calculateExercises())

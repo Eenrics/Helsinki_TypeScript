@@ -17,19 +17,19 @@ const argumentParser = (args: string[]): BMIValues => {
     }
   }
 
-const calculateBmi = (): string => {
+const calculateBmi = (params?: BMIValues): string => {
 
-    const { height, weight } = argumentParser(process.argv)
+    const { height, weight } = !params ? argumentParser(process.argv) : params
 
     const bmi = weight / (height / 100) ** 2;
     if (bmi < 18.5) {
-        return `Underweight (unhealthy weight: ${bmi})`;
+        return `Underweight (unhealthy weight: ${bmi.toFixed(2)})`;
     } else if (bmi < 25) {
-        return `Normal (healthy weight: ${bmi})`;
+        return `Normal (healthy weight: ${bmi.toFixed(2)})`;
     } else if (bmi < 30) {
-        return `Overweight (unhealthy weight: ${bmi})`;
+        return `Overweight (unhealthy weight: ${bmi.toFixed(2)})`;
     } else {
-        return `Obese (unhealthy weight: ${bmi})`;
+        return `Obese (unhealthy weight: ${bmi.toFixed(2)})`;
     }
 };
 
@@ -42,3 +42,5 @@ try {
     }
     console.log(errorMessage);
   }
+
+export default calculateBmi

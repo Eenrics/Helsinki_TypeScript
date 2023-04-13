@@ -73,4 +73,12 @@ const calculateExercises = (): Result => {
 
 }
 
-console.log(calculateExercises())
+try {
+    console.log(calculateExercises())
+} catch (error: unknown) {
+    let errorMessage = 'Something went wrong: '
+    if (error instanceof Error) {
+      errorMessage += error.message;
+    }
+    console.log(errorMessage);
+  }

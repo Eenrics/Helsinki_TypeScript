@@ -33,4 +33,12 @@ const calculateBmi = (): string => {
     }
 };
 
-console.log(calculateBmi())
+try {
+    console.log(calculateBmi())
+} catch (error: unknown) {
+    let errorMessage = 'Something went wrong: '
+    if (error instanceof Error) {
+      errorMessage += error.message;
+    }
+    console.log(errorMessage);
+  }

@@ -1,4 +1,4 @@
-import diaryData from '../../data/entries.json';
+import diaryData from '../data/entries.json';
 import { DiaryEntry, NonSensitiveDiaryEntry } from '../types';
 
   const diaries = diaryData as DiaryEntry[];

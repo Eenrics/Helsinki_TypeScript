@@ -1,0 +1,22 @@
+import data from "../data/patients";
+import { Patient, NonSensitiveData } from "../types/types";
+
+const getNonSensitiveData = (): NonSensitiveData[] => {
+    return data.map(({id, name, dateOfBirth, ssn, gender, occupation}) => ({
+        id, 
+        name, 
+        dateOfBirth, 
+        ssn, 
+        gender, 
+        occupation
+    })) as NonSensitiveData[];
+};
+
+const getPatient = (): Patient[] => {
+    return data as Patient[];
+};
+
+export default {
+    getNonSensitiveData,
+    getPatient
+};

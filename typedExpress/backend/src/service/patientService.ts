@@ -2,11 +2,10 @@ import data from "../data/patients";
 import { Patient, NonSensitiveData } from "../types/types";
 
 const getNonSensitiveData = (): NonSensitiveData[] => {
-    return data.map(({id, name, dateOfBirth, ssn, gender, occupation}) => ({
+    return data.map(({id, name, dateOfBirth, gender, occupation}) => ({
         id, 
         name, 
         dateOfBirth, 
-        ssn, 
         gender, 
         occupation
     })) as NonSensitiveData[];

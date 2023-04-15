@@ -15,4 +15,4 @@ export interface Patient {
     occupation: string
 }
 
-export type NonSensitiveData = Omit<Patient, "name" | "dateOfBirth">;
+export type NonSensitiveData = Omit<Patient, "ssn">;

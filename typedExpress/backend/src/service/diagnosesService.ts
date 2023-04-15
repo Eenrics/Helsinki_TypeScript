@@ -5,4 +5,6 @@ const getDiagnoses = (): Diagnose[] => {
     return (data as Diagnose[]);
 };
 
-export default getDiagnoses;
+export default {
+    getDiagnoses
+};

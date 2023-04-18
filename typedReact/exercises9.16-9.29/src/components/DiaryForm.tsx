@@ -47,7 +47,13 @@ const DiaryForm = (props: setProp) => {
                 Weather: {
                     weatherList.map((w, i) => {
                         return <span key={i}>
-                                <input type="radio" id={w} name="weather" value={w} onChange={(e) => setWeather(e.target.value)} />
+                                <input 
+                                    type="radio" 
+                                    id={w} 
+                                    name="weather" 
+                                    value={w} 
+                                    onChange={(e) => setWeather(e.target.value)}
+                                    checked={weather === w} />
                                 <label htmlFor={w}> {w[0].toUpperCase() + w.slice(1)} </label>
                               </span>
                     })
@@ -55,7 +61,13 @@ const DiaryForm = (props: setProp) => {
                 Visibility: {
                     visibilityList.map((v, i) => {
                         return <span key={i}>
-                                <input type="radio" id={v} name="visibility" value={v} onChange={(e) => setVisibility(e.target.value)} />
+                                <input 
+                                    type="radio" 
+                                    id={v} 
+                                    name="visibility" 
+                                    value={v} 
+                                    onChange={(e) => setVisibility(e.target.value)}
+                                    checked={visibility === v} />
                                 <label htmlFor={v}> {v[0].toUpperCase() + v.slice(1)} </label>
                               </span>
                     })

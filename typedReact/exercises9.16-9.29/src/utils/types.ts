@@ -1,46 +1,39 @@
-  interface CoursePartBase {
-    name: string;
-    exerciseCount: number;
+
+export enum Weather {
+  Sunny = 'sunny',
+  Rainy = 'rainy',
+  Cloudy = 'cloudy',
+  Stormy = 'stormy',
+  Windy = 'windy',
+}
+
+export enum Visibility {
+  Great = 'great',
+  Good = 'good',
+  Ok = 'ok',
+  Poor = 'poor',
+}
+
+export interface DiaryEntry {
+    id: number;
+    date: string;
+    weather: Weather;
+    visibility: Visibility;
+    comment?: string;
   }
+  
+export type NonSensitiveDiaryEntry = Omit<DiaryEntry, 'comment'>;
 
-  interface CourseBaseDetail extends CoursePartBase {
-    description: string
-  }
+export type NonSensitiveDiariesProp = {
+  diaries: NonSensitiveDiaryEntry[]
+}
 
-  interface CoursePartBasic extends CourseBaseDetail {
-    kind: "basic"
-  }
+export type NonSensitiveDiaryProp = {
+  diary: NonSensitiveDiaryEntry
+}
 
-  interface CoursePartGroup extends CoursePartBase {
-    groupProjectCount: number;
-    kind: "group"
-  }
+export type NewDiaryEntry = Omit<DiaryEntry, 'id'>;
 
-  interface CoursePartBackground extends CourseBaseDetail {
-    backgroundMaterial: string;
-    kind: "background"
-  }
-
-  interface CoursePartSpecial extends CourseBaseDetail {
-    requirements: string[];
-    kind: "special"
-  }
-
-  export type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground | CoursePartSpecial;
-
-  export interface CourseName {
-    courseName: string
-  }
-
-  export interface CourseParts {
-    courseParts: CoursePart[]
-  }
-
-  export interface Parts {
-    part: CoursePart
-  }
-
-  export interface Average {
-    total: number
-  }
-
+// export type NewDiaryEntryProp = {
+//   newDiary: NewDiaryEntry
+// }

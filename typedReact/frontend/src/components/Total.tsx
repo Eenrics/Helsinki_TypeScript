@@ -1,6 +1,4 @@
-interface Average {
-    total: number
-}
+import { Average } from "../utils/types";
 
 const Total = (props: Average) => {
     return ( 

@@ -1,6 +1,4 @@
-interface CourseName {
-    courseName: string
-}
+import { CourseName } from "../utils/types";
 
 const Header = (props: CourseName) => {
     return ( 

@@ -13,7 +13,7 @@ const getNonSensitiveData = (): NonSensitiveData[] => {
 };
 
 const getPatient = (): Patient[] => {
-    return data as Patient[];
+    return data ;
 };
 
 const addPatient = (patient: NewPatient): Patient => {

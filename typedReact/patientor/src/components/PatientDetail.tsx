@@ -1,13 +1,22 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import patientService from '../services/patients'
-import { Patient } from "../types"
+import { Patient, Diagnosis } from "../types"
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 
 const PatientDetail = () => {
     const [data, setData] = useState<Patient>()
+    const [diagnosisCodes, setdiagnosisCodes] = useState<Diagnosis[]>()
     const { id } = useParams()
+
+    useEffect(() => {
+        const fetchDiagnoses = async () => {
+            const diagnoses = await patientService.getDiagnosis()
+            setdiagnosisCodes(diagnoses)
+            };
+            void fetchDiagnoses();
+    }, [])
 
     useEffect(() => {
         if (id !== undefined) {
@@ -33,6 +42,28 @@ const PatientDetail = () => {
             </span>
             <p>ssn: {data.ssn}</p>
             <p>occupation: {data.occupation}</p>
+            <div>
+                <h3>entries</h3>
+                {
+                    data.entries.map(e => {
+                        return (
+                            <>
+                                <p>
+                                    <span>{e.date}</span> {" "}
+                                    <span style={{fontStyle: "italic"}}>{e.description}</span>
+                                </p>
+                                <ul>
+                                    {
+                                        e.diagnosisCodes?.map(d => {
+                                            return <li>{`${d} ${diagnosisCodes?.find(ele => ele.code === d)?.name}`}</li>
+                                        })
+                                    }
+                                </ul>
+                            </>
+                        )
+                    })
+                }
+            </div>
         </div> 
         );
 }

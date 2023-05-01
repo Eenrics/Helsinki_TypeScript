@@ -24,7 +24,7 @@ const Base: React.FC<{entry: BaseEntry}> = ({entry}) => {
         <ul>
             {
                 entry.diagnosisCodes?.map(d => {
-                    return <li>{`${d} ${diagnosisCodes?.find(ele => ele.code === d)?.name}`}</li>
+                    return <li key={d}>{`${d} ${diagnosisCodes?.find(ele => ele.code === d)?.name}`}</li>
                 })
             }
         </ul>

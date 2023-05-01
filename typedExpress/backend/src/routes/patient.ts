@@ -29,6 +29,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/:id/entries', (req, res) => {
+  console.log("i am here");
   try {
     const newEntry = toNewEntry(req.body);
     const addedEntry = patientService.addEntry(req.params.id, newEntry);
@@ -38,6 +39,7 @@ router.post('/:id/entries', (req, res) => {
     if (error instanceof Error) {
         errorMessage += error.message;
     }
+    console.log(errorMessage);
     res.status(404).send(errorMessage);
   }
 });

@@ -27,7 +27,8 @@ const Base: React.FC<{entry: BaseEntry}> = ({entry}) => {
                     return <li>{`${d} ${diagnosisCodes?.find(ele => ele.code === d)?.name}`}</li>
                 })
             }
-        </ul>    
+        </ul>
+        <p>Diagnosed By: {entry.specialist}</p> 
     </>
   )
 }

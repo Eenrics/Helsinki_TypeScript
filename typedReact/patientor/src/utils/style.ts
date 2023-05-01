@@ -1,0 +1,1 @@
+export const style = {borderWidth: 2, borderStyle: "solid", borderColor: "black", borderRadius: 7, padding: 5, marginBottom: 7}
